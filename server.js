@@ -20,7 +20,7 @@ passport.deserializeUser(function(obj, done) {
     done(null, obj);
 });
 
-// Use the BnetStrategy within Passport.
+// Use the BnetStrategy within Passport
 passport.use(
     new BnetStrategy(
       { clientID: BNET_ID,
