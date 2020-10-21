@@ -9,8 +9,8 @@ const passport = require('passport');
 
 const BnetStrategy = require('passport-bnet').Strategy;
 
-const BNET_ID = b23b19e3bd7b4db19e88a2561d773f41;
-const BNET_SECRET = aGx3wjy7z6Fh5VOWVZBTkw0eugFomREB;
+const BNET_ID = 'b23b19e3bd7b4db19e88a2561d773f41';
+const BNET_SECRET = 'aGx3wjy7z6Fh5VOWVZBTkw0eugFomREB';
 
 passport.serializeUser(function(user, done) {
     done(null, user);
