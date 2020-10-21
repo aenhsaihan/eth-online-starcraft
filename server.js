@@ -26,7 +26,7 @@ passport.use(
       { clientID: BNET_ID,
         clientSecret: BNET_SECRET,
         scope: "sc2.profile",
-        callbackURL: "https://localhost:3000/auth/bnet/callback" },
+        callbackURL: "https://eth-online-starcraft.herokuapp.com/auth/bnet/callback" },
       function(accessToken, refreshToken, profile, done) {
         process.nextTick(function () {
           return done(null, profile);
