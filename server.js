@@ -73,7 +73,7 @@ app.get('/', function(req, res) {
   }
 });
 
-app.get('/matches', function(req, res) {
+app.get('/matches', function(req, response) {
     if(req.isAuthenticated()) {
         request('https://us.api.blizzard.com/sc2/legacy/profile/1/1/1024475/matches?access_token=USxkDM2RvhFks6p7Ff2G3IkfgI5Jy46L2i', { json: true }, (err, res, body) => {
             if (err) { return console.log(err); }
@@ -91,7 +91,7 @@ app.get('/matches', function(req, res) {
                 output+="</tr>";
             }
             output+="</table>";
-            res.send(output);
+            response.send(output);
         });        
     }
 });
