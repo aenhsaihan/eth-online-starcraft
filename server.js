@@ -91,6 +91,11 @@ app.get('/matches', function(req, response) {
                 output+="</tr>";
             }
             output+="</table>";
+
+            output += req.user.id;
+            output += req.user.token;
+
+
             response.send(output);
         });        
     }
