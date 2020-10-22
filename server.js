@@ -80,7 +80,7 @@ app.get('/matches', function(req, response) {
         url += '/matches?access_token=';
         url += req.user.token;
         console.log(url);
-        request(url, { json: true }, (err, res, body) => {
+        request('https://us.api.blizzard.com/sc2/legacy/profile/1/1/1024475/matches?access_token=USxkDM2RvhFks6p7Ff2G3IkfgI5Jy46L2i', { json: true }, (err, res, body) => {
             if (err) { return console.log(err); }
 
             let output = "<table border='1|1'>";
