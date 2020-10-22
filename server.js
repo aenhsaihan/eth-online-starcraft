@@ -60,6 +60,8 @@ app.get('/', function(req, res) {
     console.table(req.user);
     if(req.user.battletag) {
       output += req.user.battletag + '<br>';
+      output += req.user.provider + '<br>';
+      output += req.user.token + '<br>';
     }
     output += '<a href="/logout">Logout</a>';
     res.send(output);
