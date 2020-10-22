@@ -77,7 +77,8 @@ app.get('/matches', function(req, res) {
     if(req.isAuthenticated()) {
         request('https://us.api.blizzard.com/sc2/legacy/profile/1/1/1024475/matches?access_token=${req.user.token}', { json: true }, (err, res, body) => {
             if (err) { return console.log(err); }
-            res.write(JSON.stringify(body.matches));
+            console.table(body);
+            // res.write(JSON.stringify(body.matches));
         });
     }
 });
