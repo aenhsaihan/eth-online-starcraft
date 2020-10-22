@@ -57,6 +57,7 @@ app.get('/auth/bnet/callback',
 app.get('/', function(req, res) {
   if(req.isAuthenticated()) {
     var output = '<h1>Express OAuth Test</h1>' + req.user.id + '<br>';
+    console.log(req.user);
     if(req.user.battletag) {
       output += req.user.battletag + '<br>';
     }
