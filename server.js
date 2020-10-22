@@ -64,7 +64,7 @@ app.get('/', function(req, res) {
       output += req.user.provider + '<br>';
       output += req.user.token + '<br>';
     }
-    output += '<a href="/matches">Matches</a>';
+    output += '<a href="/matches">Matches</a>' + '<br>';
     output += '<a href="/logout">Logout</a>';
     res.send(output);
   } else {
@@ -77,8 +77,22 @@ app.get('/matches', function(req, res) {
     if(req.isAuthenticated()) {
         request('https://us.api.blizzard.com/sc2/legacy/profile/1/1/1024475/matches?access_token=USxkDM2RvhFks6p7Ff2G3IkfgI5Jy46L2i', { json: true }, (err, res, body) => {
             if (err) { return console.log(err); }
-            res.write(JSON.stringify(body.matches));
+
+            let output = "<table border='1|1'>";
+            for (let index = 0; index < body.matches.length; index++) {
+                html+="<tr>";
+
+                html+="<td>"+body.matches[i].map+"</td>";
+                html+="<td>"+body.matches[i].type+"</td>";
+                html+="<td>"+body.matches[i].decision+"</td>";
+                html+="<td>"+body.matches[i].speed+"</td>";
+                html+="<td>"+body.matches[i].date+"</td>";
+                
+                html+="</tr>";
+            }
         });
+
+        res.send(output);
     }
 });
 
