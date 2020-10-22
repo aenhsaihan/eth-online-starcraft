@@ -79,7 +79,7 @@ app.get('/matches', function(req, res) {
             if (err) { return console.log(err); }
 
             let output = "<table border='1|1'>";
-            for (let index = 0; index < body.matches.length; index++) {
+            for (let i = 0; i < body.matches.length; i++) {
                 output+="<tr>";
 
                 output+="<td>"+body.matches[i].map+"</td>";
