@@ -80,19 +80,19 @@ app.get('/matches', function(req, res) {
 
             let output = "<table border='1|1'>";
             for (let index = 0; index < body.matches.length; index++) {
-                html+="<tr>";
+                output+="<tr>";
 
-                html+="<td>"+body.matches[i].map+"</td>";
-                html+="<td>"+body.matches[i].type+"</td>";
-                html+="<td>"+body.matches[i].decision+"</td>";
-                html+="<td>"+body.matches[i].speed+"</td>";
-                html+="<td>"+body.matches[i].date+"</td>";
+                output+="<td>"+body.matches[i].map+"</td>";
+                output+="<td>"+body.matches[i].type+"</td>";
+                output+="<td>"+body.matches[i].decision+"</td>";
+                output+="<td>"+body.matches[i].speed+"</td>";
+                output+="<td>"+body.matches[i].date+"</td>";
                 
-                html+="</tr>";
+                output+="</tr>";
             }
-        });
-
-        res.send(output);
+            output+="</table>";
+            res.send(output);
+        });        
     }
 });
 
