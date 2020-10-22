@@ -2,6 +2,8 @@
 const express = require('express');
 const app = express();
 
+const request = require('request');
+
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 
@@ -57,18 +59,27 @@ app.get('/auth/bnet/callback',
 app.get('/', function(req, res) {
   if(req.isAuthenticated()) {
     var output = '<h1>Express OAuth Test</h1>' + req.user.id + '<br>';
-    console.table(req.user);
     if(req.user.battletag) {
       output += req.user.battletag + '<br>';
       output += req.user.provider + '<br>';
       output += req.user.token + '<br>';
     }
+    output += '<a href="/matches">Matches</a>';
     output += '<a href="/logout">Logout</a>';
     res.send(output);
   } else {
     res.send('<h1>Express OAuth Test</h1>' +
              '<a href="/auth/bnet">Login with Bnet</a>');
   }
+});
+
+app.get('/matches', function(req, res) {
+    if(req.isAuthenticated()) {
+        request('https://us.api.blizzard.com/sc2/legacy/profile/1/1/1024475/matches?access_token=${req.user.token}', { json: true }, (err, res, body) => {
+            if (err) { return console.log(err); }
+            res.write(JSON.stringify(body.matches));
+        });
+    }
 });
 
 app.get('/logout', function(req, res) {
