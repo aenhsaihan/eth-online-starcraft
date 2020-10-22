@@ -75,7 +75,11 @@ app.get('/', function(req, res) {
 
 app.get('/matches', function(req, response) {
     if(req.isAuthenticated()) {
-        const url = 'https://us.api.blizzard.com/sc2/legacy/profile/1/1/' + req.user.id + '/matches?access_token=' + req.user.token;
+        let url = 'https://us.api.blizzard.com/sc2/legacy/profile/1/1/'; 
+        url += req.user.id;
+        url += '/matches?access_token=';
+        url += req.user.token;
+        console.log(url);
         request(url, { json: true }, (err, res, body) => {
             if (err) { return console.log(err); }
 
