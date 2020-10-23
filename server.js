@@ -36,6 +36,8 @@ passport.use(
       })
   );
 
+app.set('view-engine', 'ejs');
+
   // configure Express
 app.use(cookieParser());
 app.use(session({ secret: 'blizzard',
